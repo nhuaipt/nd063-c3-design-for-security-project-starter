@@ -1,5 +1,10 @@
 Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
 
 # Poor practice 1
+Public Access to Web Application Instance in a Trusted Subnet:
 
+The web application instance is exposed to the internet via the Application Load Balancer, which listens on HTTP (port 80). This means the traffic is unencrypted, making it vulnerable to interception (e.g., Man-in-the-Middle attacks). Sensitive data, like login credentials or API keys, can be compromised through plain HTTP. A better approach would be to use HTTPS to secure communication between clients and the load balancer.
 # Poor practice 2
+Unrestricted Access to S3 Buckets from Untrusted Instances:
+
+The untrusted subnet, where the attack simulation instance resides, can potentially access the S3 buckets, including the secret recipe vault. If the attack instance compromises the web application or gains valid credentials, it could access sensitive data. A more secure setup would involve restricting S3 bucket access by implementing strict bucket policies and ensuring only the necessary instances have access to each bucket.
