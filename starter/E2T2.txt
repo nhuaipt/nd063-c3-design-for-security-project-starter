@@ -1,3 +1,37 @@
-Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+Identified Vulnerabilities and Recommendations
+1. CloudTrail Logs Public Accessibility (CloudTrail.6)
 
-Bonus - provide recommendations on how to remediate the vulnerabilities.
+Description: The S3 bucket used to store CloudTrail logs is not configured to restrict public access.
+Implication: If CloudTrail logs are publicly accessible, sensitive information about API calls and resource configurations could be exposed to unauthorized individuals, leading to potential security risks.
+Recommendation:
+Configure the S3 bucket to restrict public access.
+Enable S3 Block Public Access settings and use appropriate bucket policies to ensure only authorized personnel or services can access the logs.
+
+2. IAM Root User Access Key (IAM.4)
+
+Description: An access key for the root user exists.
+Implication: Root access keys pose a significant security risk as they have unrestricted access to all resources in the AWS account.
+Recommendation:
+Immediately delete the root user’s access keys if they exist.
+Use IAM roles and users with least privilege policies instead of the root account for daily operations.
+Enable multi-factor authentication (MFA) for the root user to add an extra layer of security.
+
+3.Lack of MFA for Root User (IAM.6 & IAM.9)
+
+Description: MFA is not enabled for the root user.
+Implication: Without MFA, the root account is more vulnerable to unauthorized access, which could lead to severe security breaches.
+Recommendation:
+Enable hardware or virtual MFA for the root user to enhance account security.
+Regularly review and monitor access to the root account, and minimize its usage to only critical tasks.
+
+4. CloudTrail Logging Status (CloudTrail)
+
+Description: CloudTrail is not enabled for all regions or its configuration is incomplete.
+Implication: Lack of comprehensive logging can hinder the ability to audit and track API activity, reducing the visibility into potential security incidents.
+Recommendation:
+Ensure that CloudTrail is enabled for all regions and configured to log all API calls.
+Set up log file validation and encryption to maintain the integrity and confidentiality of the logs.
+Regularly review CloudTrail configurations and logs for suspicious activities.
+
+Conclusion
+Addressing these vulnerabilities will significantly enhance the security posture of the AWS environment. Ensuring proper access controls, enabling MFA, and comprehensive logging are critical steps to mitigate potential threats and comply with security best practices.
