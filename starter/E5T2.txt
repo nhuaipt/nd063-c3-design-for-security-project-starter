@@ -1,13 +1,13 @@
-# Identify tools that will allow you to do the following:
+### E5T2.txt
 
-## Scan infrastructure as code templates
+1. **Checkov**:
+   - **Purpose**: Scans Infrastructure as Code (IaC) templates (e.g., Terraform, CloudFormation).
+   - **Example Compliance Violation**: Detects a security group that allows SSH from `0.0.0.0/0`, which is a potential security risk as it opens the instance to the entire internet.
 
-### Example vulnerability
+2. **Trivy**:
+   - **Purpose**: Scans container images for OS and application vulnerabilities.
+   - **Example Vulnerability**: Detects outdated `OpenSSL` version in a Docker image that is susceptible to a known CVE, which could lead to potential exploitation.
 
-##Scan AMI’s or containers for OS vulnerabilities
-
-### Example vulnerability
-
-##Scan an AWS environment for cloud configuration vulnerabilities
-
-### Example vulnerability
+3. **Prowler**:
+   - **Purpose**: Scans AWS environments for misconfigurations and compliance with security standards.
+   - **Example Violation**: Finds EBS volumes that are not encrypted, posing a risk of data exposure if the volume is compromised.
