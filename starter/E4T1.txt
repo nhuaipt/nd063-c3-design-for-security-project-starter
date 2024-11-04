@@ -1,5 +1,11 @@
+### E4T1.txt
 
+1. **Preventing SSH Brute Force Attacks**:
+   - **Limit SSH Access**: Restrict SSH access to trusted IP addresses using Security Group rules. This minimizes the risk of brute force attempts from unknown sources.
+   - **Enable MFA for SSH**: Use tools that require multi-factor authentication for SSH logins, adding an additional layer of security beyond just a password or key.
+   - **Use Bastion Host**: Deploy a bastion host within a private subnet, allowing SSH access only through this host. This isolates direct SSH access to critical servers.
 
-# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
-
-# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+2. **Preventing Unauthorized Access to Sensitive Data in S3**:
+   - **Implement Least Privilege IAM Roles**: Assign roles to instances with the minimum permissions necessary, reducing the risk of unauthorized S3 access.
+   - **Conditional S3 Bucket Policies**: Use bucket policies that restrict access based on specific conditions, such as source VPC or IP, ensuring that only authorized resources can access sensitive data.
+   - **S3 Encryption**: Enforce server-side encryption (SSE) with AWS KMS, ensuring that sensitive data is encrypted at rest and accessible only by those with appropriate permissions.
