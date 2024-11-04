@@ -1,3 +1,11 @@
-# Describe GuardDuty findings that were detected related to the brute force attack
+### E3T1.txt
 
-# Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+1. **Findings Detected**:
+   - The GuardDuty finding indicates an unauthorized SSH brute force attempt detected on the Web Service Instance (EC2). The finding type is related to `UnauthorizedAccess:EC2/SSHBruteForce`. This shows that there were multiple failed SSH login attempts, signaling a brute force attack.
+
+2. **How GuardDuty Detected the Attack**:
+   - GuardDuty uses various data sources to detect anomalies:
+     - **VPC Flow Logs**: Monitor network traffic to identify unusual patterns like repeated failed login attempts.
+     - **AWS CloudTrail Logs**: Track API activity to correlate with network behavior.
+     - **DNS Logs**: Provide insights into DNS requests made from the environment, although primarily useful for other types of threats.
+   - GuardDuty applies machine learning models and threat intelligence feeds to analyze this data and flag activities that match the signature of known attack patterns, such as brute force attempts.
